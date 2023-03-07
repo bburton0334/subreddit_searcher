@@ -1,3 +1,16 @@
+// # =============================================================================
+// # FILE : app.js
+// # PROJECT : Front-end Assignment 
+// # PROGRAMMER : Briana Burton 8410334
+// # DESCRIPTION :
+// #       The purpose of this file is to power the react front-end that will 
+//		   prompt the user to enter the name of a subreddit and search it. the
+//			program will then get the hot posts of that subreddit and display it
+//			to the user. The user can favorite the posts, see the score, and 
+//			view the comments of the post. The user can then see all of their
+//			favorited posts.
+// # =============================================================================
+
 import logo from './logo.svg';
 import React, { useState, useEffect } from 'react';
 import './App.css';
@@ -5,6 +18,7 @@ import './App.css';
 
 
 function App() {
+	// variables and arrays needed for the program
 	const [subredditInput, setSubredditInput] = useState('');
 	const [subredditPosts, setSubredditPosts] = useState([]);
 	const [favourites, setFavourites] = useState([]);
@@ -77,12 +91,12 @@ function App() {
 			</ul>
 			<h2 class='title'>My Favourite Posts</h2>
 			<ul class='favorites'>
-				{favourites.map((id) => (
-					<li class='list' key={id}>
-						<button class='remove-button' onClick={() => handleFavouriteRemove(id)}>Remove</button>{' '}
-						{id.title}{' '}
-						<a class='score'>({id.score})</a>{' '}
-						<a class='link' href={`https://www.reddit.com/comments/${id.id}`}>Comments</a>
+				{favourites.map((post) => (
+					<li class='list' key={post}>
+						<button class='remove-button' onClick={() => handleFavouriteRemove(post)}>Remove</button>{' '}
+						{post.title}{' '}
+						<a class='score'>({post.score})</a>{' '}
+						<a class='link' href={`https://www.reddit.com/comments/${post.id}`}>Comments</a>
 					</li>
 				))}
 			</ul>
